@@ -1,3 +1,3 @@
-#About this
+# About this
 
 brainfuck interpreter
