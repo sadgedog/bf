@@ -1,6 +1,4 @@
 #include <iostream>
-#include <fstream>
-
 using namespace std;
 
 // MAX MEMORY SIZE
@@ -25,7 +23,6 @@ int main(int argc, char **argv) {
   p = argv[1];
   unsigned int ptr = 0;
   char memory[MEM_SIZE];
-  stack<int> s;
   memset(memory, 0, sizeof(memory));
 
   while (*p) {
@@ -57,17 +54,15 @@ int main(int argc, char **argv) {
       // [
     case JMPTO:
       if (memory[ptr] == 0) {
-        while (*p != ']') {
+        while (*p != ']')
           p++;
-        }
       }
       break;
       // ]
     case JMPBF:
       if (memory[ptr] != 0) {
-        while (*p != '[') {
+        while (*p != '[')
           p--;
-        }
       }
       break;
       // それ以外は無視
