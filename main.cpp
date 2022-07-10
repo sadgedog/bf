@@ -2,7 +2,7 @@
 using namespace std;
 
 // MAX MEMORY SIZE
-#define MEM_SIZE 1024
+#define MEM_SIZE 32768
 #define SHIFTL '<'
 #define SHIFTR '>'
 #define INCREMENT '+'
@@ -24,16 +24,16 @@ int main(int argc, char **argv) {
   unsigned int ptr = 0;
   char memory[MEM_SIZE];
   memset(memory, 0, sizeof(memory));
-
+  
   while (*p) {
     switch (*p) {
-      // <
-    case SHIFTL:
-      ptr = (ptr <= 0) ? MEM_SIZE-1 : ptr-1;
-      break;
       // >
     case SHIFTR:
       ptr = (ptr >= MEM_SIZE-1) ? 0 : ptr+1;
+      break;
+      // <
+    case SHIFTL:
+      ptr = (ptr <= 0) ? MEM_SIZE-1 : ptr-1;
       break;
       // +
     case INCREMENT:
@@ -54,15 +54,31 @@ int main(int argc, char **argv) {
       // [
     case JMPTO:
       if (memory[ptr] == 0) {
-        while (*p != ']')
+        int nest = 0;
+        for (;;) {
           p++;
+          if (*p == JMPTO)
+            nest++;
+          if (*p == JMPBF)
+            nest--;
+          if (nest < 0)
+            break;
+        }
       }
       break;
       // ]
     case JMPBF:
       if (memory[ptr] != 0) {
-        while (*p != '[')
+        int nest = 0;
+        for (;;) {
           p--;
+          if (*p == JMPBF)
+            nest++;
+          if (*p == JMPTO)
+            nest--;
+          if (nest < 0)
+            break;
+        }
       }
       break;
       // それ以外は無視
