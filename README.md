@@ -2,5 +2,5 @@
 
 brainfuck interpreter
 
-Compile : make
-Run Test : make test
+- Compile : make
+- Run Test : make test
