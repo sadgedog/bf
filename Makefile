@@ -2,10 +2,19 @@ CFLAGS=-std=c++11
 bfi:
 	g++ $(CFLAGS) -o bfi bfi.cc
 
+bf2c:
+	g++ $(CFLAGS) -o bf2c bf2c.cc
+
+a:
+	gcc -o a a.c
+
 test: bfi
 	bash test.sh
 
-clean:
-	rm bfi
+test_bf2c: bf2c
+	bash test_bf2c.sh
 
-.PHONY: test
+clean:
+	rm bfi bf2c a
+
+.PHONY: test_bfi test_bf2c
