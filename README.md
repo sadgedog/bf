@@ -1,6 +1,6 @@
 # About this
 
-brainfuck interpreter and bf to C translator
+brainfuck interpreter and bf to C translator\\
 80s(interpreter) -> 16s(C translated)
 
 - Compile : make
