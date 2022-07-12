@@ -56,14 +56,13 @@ int main(int argc, char **argv) {
     case JMPTO:
       if (memory[ptr] == 0) {
         int nest = 0;
-        for (;;) {
+        while (nest >= 0) {
           p++;
-          if (*p == JMPTO)
-            nest++;
-          if (*p == JMPBF)
-            nest--;
-          if (nest < 0)
-            break;
+          // if (*p == JMPTO)
+          //   nest++;
+          // if (*p == JMPBF)
+          //   nest--;
+          nest = (*p == JMPTO) ? nest+1 : (*p == JMPBF) ? nest-1 : nest;
         }
       }
       break;
@@ -71,18 +70,17 @@ int main(int argc, char **argv) {
     case JMPBF:
       if (memory[ptr] != 0) {
         int nest = 0;
-        for (;;) {
+        while (nest >= 0) {
           p--;
-          if (*p == JMPBF)
-            nest++;
-          if (*p == JMPTO)
-            nest--;
-          if (nest < 0)
-            break;
+          // if (*p == JMPBF)
+          //   nest++;
+          // if (*p == JMPTO)
+          //   nest--;
+          nest = (*p == JMPBF) ? nest+1 : (*p == JMPTO) ? nest-1 : nest;
         }
       }
       break;
-      // それ以外は無視
+      // comment
     default:
       break;
     }
