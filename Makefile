@@ -1,6 +1,8 @@
 CFLAGS=-std=c++11
-bfi:
+
+main:
 	g++ $(CFLAGS) -o bfi bfi.cc
+	g++ $(CFLAGS) -o bf2c bf2c.cc
 
 bf2c:
 	g++ $(CFLAGS) -o bf2c bf2c.cc
@@ -8,7 +10,7 @@ bf2c:
 a:
 	gcc -o a a.c
 
-test: bfi
+test: main
 	bash test.sh
 
 test_bf2c: bf2c
