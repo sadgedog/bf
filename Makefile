@@ -8,7 +8,7 @@ bf2c:
 	g++ $(CFLAGS) -o bf2c bf2c.cc
 
 a:
-	gcc -o a a.c
+	gcc -O2 -o a a.c
 
 test: main
 	bash test.sh

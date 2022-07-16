@@ -4,7 +4,7 @@ test() {
     input="$1"
     # brain fuck -> C lang をa.cに書き込み
     ./bf2c "$input" > a.c
-    gcc -o a a.c
+    gcc -O2 -o a a.c
     time ./a
 }
 
