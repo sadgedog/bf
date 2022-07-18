@@ -20,5 +20,10 @@ int main(int argc, char **argv) {
   }
   // program
   p = argv[1];
+  while (*p) {
+    cout << p;
+    p++;
+  }
+  cout << endl;
   return 0;
 }
