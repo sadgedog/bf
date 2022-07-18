@@ -19,6 +19,7 @@ int main(int argc, char **argv) {
     cerr << "invalid argument" << endl;
     return 1;
   }
+  // TODO: ファイル入力から処理
   p = argv[1];
   
   // initialize
