@@ -2,6 +2,7 @@
 *.o
 bfi
 bf2c
+a.c
 a
 c2bf
 .DS_Store

@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
   // program
   p = argv[1];
   while (*p) {
-    cout << p;
+    cout << *p;
     p++;
   }
   cout << endl;
