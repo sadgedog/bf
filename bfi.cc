@@ -1,5 +1,8 @@
 // Brainfuck interpreter
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <iterator>
 using namespace std;
 
 // MAX MEMORY SIZE
@@ -14,14 +17,21 @@ using namespace std;
 #define JMPBF ']'
 
 // program
-char *p;
+const char *p;
 
 int main(int argc, char **argv) {
   if (argc != 2) {
     cerr << "Invalid Argument" << endl;
     return 1;
   }
-  p = argv[1];
+
+  // input file
+  ifstream input_file(argv[1]);
+  string str((istreambuf_iterator<char>(input_file)),
+             istreambuf_iterator<char>());
+  // program
+  p = str.c_str();
+  
   unsigned int ptr = 0;
   char memory[MEM_SIZE];
   memset(memory, 0, sizeof(memory));

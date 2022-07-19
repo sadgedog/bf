@@ -14,7 +14,6 @@ constexpr char JMPBF = ']';
 char *p;
 
 int main(int argc, char **argv) {
-
   if (argc != 2) {
     cerr << "invalid argument" << endl;
     return 1;
