@@ -16,3 +16,5 @@ Comparison of execution speed
 | sierpinski.bf (1518 Bytes)  | 0.046s    | 0.248s |
 | 99beer.bf (2676 Bytes)      | 0.690s    | 0.321s |
 | mandelbrot.bf (11594 Bytes) | 82.096s   | 0.853s |
+
+Optimized C translated was faster than interpreter by about 2000bytes
