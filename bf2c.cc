@@ -1,5 +1,8 @@
 // brainfuck to C lang
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <iterator>
 using namespace std;
 
 constexpr char SHIFTL = '<';
@@ -11,15 +14,21 @@ constexpr char IN = ',';
 constexpr char JMPTO = '[';
 constexpr char JMPBF = ']';
 
-char *p;
+const char *p;
 
 int main(int argc, char **argv) {
   if (argc != 2) {
     cerr << "invalid argument" << endl;
     return 1;
   }
-  // TODO: ファイル入力から処理
-  p = argv[1];
+  // input file
+  ifstream input_file(argv[1]);
+  string str((istreambuf_iterator<char>(input_file)),
+             istreambuf_iterator<char>());
+  // program
+  p = str.c_str();
+  
+  //p = argv[1];
   
   // initialize
   cout << "#include <stdio.h>" << endl;
