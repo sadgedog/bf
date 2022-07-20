@@ -6,5 +6,7 @@ yy = [0.105, 0.214, 0.248, 0.321, 0.853]
 
 plt.plot(x, y, label="Interpreter")
 plt.plot(x, yy, label="C translated")
+plt.xlabel("Bytes")
+plt.ylabel("Second")
 plt.legend()
 plt.show()
