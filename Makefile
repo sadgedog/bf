@@ -3,7 +3,7 @@ CFLAGS=-std=c++11
 main:
 	g++ $(CFLAGS) -o bfi bfi.cc
 	g++ $(CFLAGS) -o bf2c bf2c.cc
-	g++ $(CFLAGS) -o c2bf c2bf.cc
+	#g++ $(CFLAGS) -o c2bf c2bf.cc
 
 bf2c:
 	g++ $(CFLAGS) -o bf2c bf2c.cc
