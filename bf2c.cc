@@ -27,39 +27,43 @@ int main(int argc, char **argv) {
              istreambuf_iterator<char>());
   // program
   p = str.c_str();
+
+  string indent = "";
   
-  //p = argv[1];
-  
-  // initialize
+  // prologue
   cout << "#include <stdio.h>" << endl;
+  cout << endl;
   cout << "int main(void) {" << endl;
-  cout << "char data[30000] = {};" << endl;
-  cout << "char *ptr = data;" << endl;
+  cout << "  char data[30000] = {};" << endl;
+  cout << "  char *ptr = data;" << endl;
+  // code gen
   while (*p) {
     switch (*p) {
     case SHIFTL:
-      cout << "--ptr;" << endl;
+      cout << indent << "  --ptr;" << endl;
       break;
     case SHIFTR:
-      cout << "++ptr;" << endl;
+      cout << indent << "  ++ptr;" << endl;
       break;
     case INCREMENT:
-      cout << "++*ptr;" << endl;
+      cout << indent << "  ++*ptr;" << endl;
       break;
     case DECREMENT:
-      cout << "--*ptr;" << endl;
+      cout << indent << "  --*ptr;" << endl;
       break;
     case OUT:
-      cout << "putchar(*ptr);" << endl;
+      cout << indent << "  putchar(*ptr);" << endl;
       break;
     case IN:
-      cout << "*ptr = getchar();" << endl;
+      cout << indent << "  *ptr = getchar();" << endl;
       break;
     case JMPTO:
-      cout << "while (*ptr) {" << endl;
+      cout << indent << "  while (*ptr) {" << endl;
+      indent = "  ";
       break;
     case JMPBF:
-      cout << "}" << endl;
+      indent = "";
+      cout << indent << "  }" << endl;
       break;
     default:
       cout << endl;
@@ -67,6 +71,8 @@ int main(int argc, char **argv) {
     }
     p++;
   }
+  // epilogue
+  cout << "  return 0;" << endl;
   cout << "}" << endl;
   return 0;
 }
